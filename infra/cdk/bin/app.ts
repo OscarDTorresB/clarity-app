@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+import { App } from "aws-cdk-lib";
+import { CoreStack } from "../lib/stack";
+
+const app = new App();
+new CoreStack(app, "CoupleExpensesStack");

@@ -1,0 +1,23 @@
+{
+  "name": "cdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.0",
+  "dependencies": {
+    "aws-cdk-lib": "^2.235.0",
+    "constructs": "^10.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.9",
+    "aws-cdk": "^2.1101.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
