@@ -4,6 +4,7 @@ import {
   signIn as amplifySignIn,
   signOut as amplifySignOut,
   signInWithRedirect,
+  fetchUserAttributes,
 } from "aws-amplify/auth"
 
 type AuthStatus = "idle" | "loading" | "authenticated" | "unauthenticated"
@@ -11,6 +12,10 @@ type AuthStatus = "idle" | "loading" | "authenticated" | "unauthenticated"
 type User = {
   userId: string
   username: string
+  email: string
+  emailVerified: boolean
+  firstName: string
+  lastName: string
   signInDetails?: unknown
 } | null
 
@@ -32,7 +37,18 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ status: "loading", error: undefined })
     try {
       const user = await getCurrentUser()
-      set({ user: { userId: user.userId, username: user.username, signInDetails: user.signInDetails }, status: "authenticated" })
+      const attributes = await fetchUserAttributes()
+      set({
+        user: {
+          userId: user.userId,
+          username: user.username,
+          email: attributes.email!,
+          emailVerified: attributes.email_verified === "true",
+          firstName: attributes.given_name!,
+          lastName: attributes.family_name!,
+          signInDetails: user.signInDetails,
+        }, status: "authenticated"
+      })
     } catch {
       set({ user: null, status: "unauthenticated" })
     }
@@ -43,7 +59,18 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       await amplifySignIn({ username, password })
       const user = await getCurrentUser()
-      set({ user: { userId: user.userId, username: user.username, signInDetails: user.signInDetails }, status: "authenticated" })
+      const attributes = await fetchUserAttributes()
+      set({
+        user: {
+          userId: user.userId,
+          username: user.username,
+          email: attributes.email!,
+          emailVerified: attributes.email_verified === "true",
+          firstName: attributes.given_name!,
+          lastName: attributes.family_name!,
+          signInDetails: user.signInDetails,
+        }, status: "authenticated"
+      })
     } catch (e: unknown) {
       console.error("Sign in error:", e)
       set({ error: "Sign in failed", status: "unauthenticated" })

@@ -15,7 +15,7 @@ export default function Dashboard() {
       <Card className="border-border/60 bg-card/80 shadow-2xl shadow-black/30 backdrop-blur">
         <CardHeader>
           <CardTitle>Welcome</CardTitle>
-          <CardDescription>You're signed in{user?.username ? ` as ${user.username}` : ""}.</CardDescription>
+          <CardDescription>You're signed in{user?.firstName ? ` as ${[user.firstName, user.lastName].filter(Boolean).join(" ")}` : ""}.</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-3">
           <motion.p className="text-sm text-muted-foreground" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }}>
