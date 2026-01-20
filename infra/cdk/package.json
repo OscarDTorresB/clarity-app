@@ -1,11 +1,13 @@
 {
-  "name": "cdk",
+  "name": "@clarity/infra",
+  "private": true,
   "version": "1.0.0",
-  "type": "module",
+  "type": "commonjs",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -p tsconfig.json",
+    "synth": "cdk synth",
+    "deploy": "cdk deploy"
   },
   "keywords": [],
   "author": "",
