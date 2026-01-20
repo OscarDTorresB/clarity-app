@@ -29,8 +29,14 @@ This project is a React application built with TypeScript and Vite, utilizing AW
 - **Vite**: The build tool used for this project, providing fast development and build times.
 - **React**: The core library for building user interfaces.
 - **AWS Amplify**: Used for authentication and other AWS services integration.
-- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **Tailwind CSS V4**: Utility-first CSS framework for styling.
 - **shadcn/ui**: High-quality React component library built on top of Tailwind CSS. Components are installed in `src/components/ui`.
+- **Motion**: Animations and transitions for UI elements (package: `motion`).
+
+## UI Theme
+- **Theme Direction**: Minimalistic and modern with black backgrounds and green accent tones.
+- **Theme Source**: Global colors are defined in `apps/web/src/index.css` using CSS variables and Tailwind `@theme` mappings.
+- **Animations**: Use Motion for subtle entrance and emphasis animations on key pages (e.g., login and dashboard).
 
 ## Examples
 - **Component Example**: The `App` component in `src/App.tsx` demonstrates how to structure a basic React component with state management.

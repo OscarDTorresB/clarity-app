@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { useAuthStore } from "@/stores/auth"
+import { motion } from "motion/react"
 
 export default function Header() {
   const { status, user, signOut, signInHosted } = useAuthStore()
@@ -11,9 +12,14 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-10 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <motion.header
+      className="sticky top-0 z-10 border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      initial={{ y: -8, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.35 }}
+    >
       <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-4">
-        <Link to="/" className="font-semibold">Clarity</Link>
+        <Link to="/" className="font-semibold tracking-wide text-primary">Clarity</Link>
         <div className="flex items-center gap-2">
           {status === "authenticated" ? (
             <>
@@ -25,6 +31,6 @@ export default function Header() {
           )}
         </div>
       </div>
-    </header>
+    </motion.header>
   )
 }
