@@ -27,7 +27,7 @@ export class CoreStack extends Stack {
       {
         defaultRootObject: "index.html",
         defaultBehavior: {
-          origin: new origins.S3StaticWebsiteOrigin(webBucket),
+          origin: origins.S3BucketOrigin.withOriginAccessControl(webBucket),
           viewerProtocolPolicy:
             cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         },
