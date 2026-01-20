@@ -65,6 +65,8 @@ export class CoreStack extends Stack {
       userPoolName: "clarity-users",
       standardAttributes: {
         email: { required: true, mutable: true },
+        givenName: { required: true, mutable: true },
+        familyName: { required: true, mutable: true },
       },
       selfSignUpEnabled: true,
       signInAliases: {
